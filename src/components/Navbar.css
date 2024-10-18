@@ -1,0 +1,51 @@
+/* src/components/Navbar.css */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #f8f9fa; /* Light background */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Larger font for brand */
+    font-weight: bold; /* Bold text for brand */
+    color: #333; /* Dark text for branding */
+}
+
+.nav-link {
+    color: #333; /* Default link color */
+    margin: 0 15px; /* Spacing between links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1); /* Light border for the toggler */
+}
+
+/* Styling for the Sign In link */
+.nav-link.signin {
+    border: 2px solid #007bff; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px 10px; /* Padding around the text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+.nav-link.signin:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+/* Optional: Styling for active links */
+.nav-link.active {
+    font-weight: bold; /* Make active link bold */
+    color: #007bff; /* Active link color */
+}
+
+/* Additional custom styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px; /* Padding for smaller screens */
+    }
+}

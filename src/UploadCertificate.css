@@ -1,0 +1,115 @@
+/* src/UploadCertificate.css */
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+
+    background-color: #f8f9fa; /* Light background for better contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    max-width: 500px; /* Maximum width for the upload container */
+    margin: 20px auto; /* Center the container */
+}
+
+h2 {
+    margin-bottom: 20px; /* Space below the heading */
+    color: #333; /* Darker color for better readability */
+}
+
+.upload-area {
+    border: 2px dashed #007bff; /* Dashed border for the file input */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, border-color 0.3s; /* Transition for border color and background */
+}
+
+.upload-area:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+    border-color: #0056b3; /* Darker border on hover */
+}
+
+input[type="file"] {
+    display: none; /* Hide the file input */
+}
+
+.upload-button {
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition for background color */
+    margin-top: 10px; /* Space above the button */
+}
+
+.upload-button:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}
+
+.file-names {
+    margin-top: 10px; /* Space above the file names */
+}
+
+.jars-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensure jars wrap if more than one row */
+    margin-top: 20px;
+    gap: 10px; /* Space between jars */
+}
+
+.jar {
+    width: 60px; /* Width of the jar */
+    height: 150px; /* Height of the jar */
+    border: 2px solid #007bff; /* Jar border color */
+    border-radius: 5px; /* Slight rounding of corners */
+    position: relative; /* Positioning for water filling */
+    overflow: hidden; /* Hide overflowing water */
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent jar for depth effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for jars */
+}
+
+.water {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0; /* Start with no water */
+    background-color: #007bff; /* Water color */
+    transition: height 1s ease-in-out; /* Smooth transition for filling */
+    border-radius: 0 0 5px 5px; /* Round the top of the water */
+}
+
+/* Optional: Add responsiveness */
+@media (max-width: 600px) {
+    .upload-container {
+        padding: 15px; /* Less padding on smaller screens */
+    }
+
+    .jar {
+        width: 50px; /* Smaller jars on smaller screens */
+        height: 120px; /* Smaller jars on smaller screens */
+    }
+} 
+/* src/UploadCertificate.css */
+.extracted-text {
+    margin-top: 20px; /* Space above the extracted text section */
+    width: 100%; /* Full width */
+}
+
+.extracted-text h3 {
+    margin: 10px 0; /* Space around the file name */
+    color: #007bff; /* Color for file names */
+}
+
+.extracted-text p {
+    background: #f1f1f1; /* Light background for text */
+    padding: 10px; /* Padding for text */
+    border-radius: 4px; /* Rounded corners */
+    margin: 5px 0; /* Space between extracted texts */
+}

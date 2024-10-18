@@ -1,0 +1,335 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.homepage {
+    /* Set a height and width for the homepage */
+    width: 90%; /* Reduce width for better fit */
+    margin: 0 auto; /* Center the homepage */
+}
+
+.hero {
+    background-image: url('../../assets/home.jpeg'); /* Background image */
+    background-size: cover; /* Cover entire section */
+    background-position: center; /* Center the image */
+    height: 60vh; /* Decrease height */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: white; /* Change text color for contrast */
+}
+
+.welcome-section {
+    text-align: center; /* Center the text and button */
+    padding: 20px 0; /* Add padding for spacing */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background for contrast */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem; /* Adjust as necessary */
+    color: #333; /* Text color */
+}
+
+.welcome-section p {
+    font-size: 1.25rem; /* Adjust as necessary */
+    color: #555; /* Text color */
+}
+
+.get-started-button {
+    margin-top: 20px; /* Spacing above the button */
+    padding: 10px 30px;
+    background-color: #007bff; /* Button color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.get-started-button:hover {
+    background-color: #0056b3; /* Darken on hover */
+}
+
+.how-it-works, .why-certiresume, .features, .contact-us {
+    padding: 20px; /* Reduce padding */
+    margin: 10px 0; /* Add margin between sections */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.step-card, .benefit-card, .feature-item {
+    margin: 10px; /* Add margin between cards */
+    padding: 15px; /* Reduce padding inside cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+.footer {
+    padding: 10px; /* Reduce padding */
+    background-color: #f1f1f1; /* Light background color */
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    margin: 0 5px; /* Adjust margin for social icons */
+    color: #333; /* Change color to fit your theme */
+    font-size: 18px; /* Adjust size for better fit */
+}
+
+.social-icon:hover {
+    color: #007BFF; /* Change color on hover */
+}
+
+.upload-input {
+    display: none; /* Keep the input field hidden */
+}
+
+/* How It Works Section */
+/* How It Works Section */
+.how-it-works {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f7f9fc;
+}
+
+.how-it-works h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.steps {
+    display: flex; /* Change to flex for side-by-side alignment */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    justify-content: center; /* Center align the items */
+    gap: 20px; /* Space between items */
+}
+
+.step-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px; /* Set a fixed width for uniformity */
+    transition: transform 0.3s;
+    text-align: center; /* Center the text in each card */
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+
+/* Why CertiResume Section */
+.why-certiresume {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff; /* White background for contrast */
+}
+
+.why-certiresume h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.why-certiresume p {
+    font-size: 1.2rem;
+    margin-bottom: 30px; /* Space between paragraph and list */
+}
+
+.benefits {
+    display: flex; /* Flex layout for boxes */
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center; /* Center the boxes */
+    gap: 20px; /* Space between boxes */
+}
+
+.benefit-card {
+    background-color: #f7f9fc; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px; /* Set a fixed width for uniformity */
+    text-align: center; /* Center the text in each card */
+    transition: transform 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.icon {
+    font-size: 2.5rem; /* Icon size */
+    color: #007bff; /* Icon color */
+    margin-bottom: 15px; /* Space below icon */
+}
+
+.benefit-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 0; /* Space above and below heading */
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: #555; /* Text color for description */
+}
+
+/* Features Section */
+.features {
+    background-color: #f7f9fc;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.feature-list {
+    display: flex; /* Use flexbox to arrange items side by side */
+    justify-content: center; /* Center the items */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 20px; /* Space between items */
+}
+
+.feature-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px; /* Set width to control the size of the feature items */
+    text-align: center; /* Center the text inside each item */
+    transition: transform 0.3s, background-color 0.3s;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+.feature-icon {
+    font-size: 2.5rem; /* Adjust the size of the icons */
+    color: #007bff; /* Icon color */
+    margin-bottom: 15px; /* Space below the icon */
+}
+
+.feature-item h3 {
+    font-size: 1.6rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Hover effect */
+.feature-item:hover {
+    transform: translateY(-10px);
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .feature-list {
+        flex-direction: column; /* Stack items on smaller screens */
+    }
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contact Us Section */
+.contact-section {
+    background-color: #f7f9fc;
+    padding: 43px 20px; /* Increase padding to adjust height */
+    text-align: center;
+    width: 100%; /* Full-width section */
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Flexbox for centering */
+.contact-button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.contact-button {
+    padding: 10px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #0056b3; /* Darken on hover */
+}
+
+.footer {
+    padding: 20px; /* Add padding */
+    background-color: #fffbfb; /* Use a primary color for the footer */
+    color: white; /* White text color for contrast */
+    text-align: center; /* Center align the text */
+    width: 100%; /* Set the width to 100% for full screen */
+   /* Use fixed positioning for testing */
+    left: 0; /* Align the footer to the left */
+    right: 0; /* Align the footer to the right */
+    bottom: 0; /* Ensure it stays at the bottom */
+    z-index: 1; /* Ensure it is on top of other elements */
+}
+
+
+.footer p {
+    margin: 0; /* Remove default margin */
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .step-card, .benefit-card, .feature-item {
+        width: 100%; /* Full width on small screens */
+    }
+}

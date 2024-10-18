@@ -1,0 +1,75 @@
+.resume-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.resume-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.resume-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.resume-field label {
+    font-weight: bold;
+    width: 20%;
+}
+
+.resume-field input,
+.resume-field textarea {
+    width: 75%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.resume-field textarea {
+    resize: none;
+    height: 80px;
+}
+
+.resume-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.edit-button,
+.save-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.save-button {
+    background-color: #28a745;
+}
+
+.edit-button:hover,
+.save-button:hover {
+    background-color: #0056b3;
+}
