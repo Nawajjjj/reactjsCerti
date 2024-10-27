@@ -6,12 +6,13 @@ import './UploadCertificate.css';
 const UploadCertificate = () => {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [jars, setJars] = useState([]);
+    const [isProcessing, setIsProcessing] = useState(false);
     const navigate = useNavigate();
 
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
         setSelectedFiles(files);
-        setJars(files.map((file, index) => ({ id: index, name: file.name, filled: false })));
+        setJars(files.map((file, index) => ({ id: index, name: file.name, filled: false, filling: false }))); // Added "filling" state
     };
 
     const handleUpload = () => {
@@ -20,18 +21,17 @@ const UploadCertificate = () => {
             return;
         }
 
-        let allFileNames = [];
-        const ocrPromises = []; // Array to hold all OCR promises
-        const extractedData = []; // Store extracted data temporarily
+        setIsProcessing(true);
+        const ocrPromises = [];
+        const extractedData = [];
 
         jars.forEach((jar, index) => {
             setTimeout(() => {
                 setJars(prevJars => {
                     const newJars = [...prevJars];
-                    newJars[index].filled = true;
+                    newJars[index].filling = true; // Start filling water animation
                     return newJars;
                 });
-                allFileNames.push(jar.name);
 
                 const file = selectedFiles[index];
                 if (file) {
@@ -42,45 +42,47 @@ const UploadCertificate = () => {
                             logger: info => console.log(info),
                         }
                     ).then(({ data: { text } }) => {
-                        console.log(`Raw extracted text from ${jar.name}:`, text);
-
-                        const nameMatch = text.match(/Name[:\s]*([^\n]+)/i);  
+                        const nameMatch = text.match(/Name[:\s]*([^\n]+)/i);
                         const schoolMatch = text.match(/School[:\s]*([^\n]+)/i);
                         const emailMatch = text.match(/Email[:\s]*([^\n]+)/i);
-                        const certifications = text.match(/Certification[:\s]*([^\n]+)/gi) || []; 
+                        const certifications = text.match(/Certification[:\s]*([^\n]+)/gi) || [];
 
                         const extracted = {
                             name: nameMatch ? nameMatch[1].trim() : 'N/A',
                             school: schoolMatch ? schoolMatch[1].trim() : 'N/A',
                             email: emailMatch ? emailMatch[1].trim() : 'N/A',
                             certifications: certifications.map(cert => cert.replace(/Certification[:\s]*/, '').trim()),
-                            skills: ['N/A'],  // Placeholder for skills
-                            projects: ['N/A']  // Placeholder for projects
+                            skills: ['N/A'],
+                            projects: ['N/A']
                         };
 
                         extractedData.push(extracted);
-                        console.log(`Processed extracted data from ${jar.name}:`, extracted);
+
+                        setJars(prevJars => {
+                            const updatedJars = [...prevJars];
+                            updatedJars[index].filled = true; // Complete the water filling
+                            return updatedJars;
+                        });
                     }).catch(error => {
                         console.error(`Error processing ${jar.name}:`, error);
                     });
-                    ocrPromises.push(ocrPromise); // Push OCR promise into the array
+
+                    ocrPromises.push(ocrPromise);
                 }
 
                 if (index === jars.length - 1) {
-                    setTimeout(() => {
-                        alert(`Uploaded: ${allFileNames.join(', ')}`);
-                        // Wait for all OCR promises to resolve before navigating
-                        Promise.all(ocrPromises).then(() => {
-                            navigate('/review', {
-                                state: { extractedText: extractedData }
-                            });
+                    // Wait for all OCR promises to resolve before navigating
+                    Promise.all(ocrPromises).then(() => {
+                        setIsProcessing(false);
+                        navigate('/review', {
+                            state: { extractedText: extractedData }
                         });
-                    }, 1000);
+                    });
                 }
-            }, index * 1000);
+            }, index * 2000); // Delay for each jar filling animation
         });
 
-        setSelectedFiles([]); // Reset the selected files
+        setSelectedFiles([]);
     };
 
     return (
@@ -96,8 +98,8 @@ const UploadCertificate = () => {
                     onChange={handleFileChange}
                 />
             </div>
-            <button className="upload-button" onClick={handleUpload}>
-                Upload
+            <button className="upload-button" onClick={handleUpload} disabled={isProcessing}>
+                {isProcessing ? 'Processing...' : 'Upload'}
             </button>
             {selectedFiles.length > 0 && (
                 <div className="file-names">
@@ -109,7 +111,8 @@ const UploadCertificate = () => {
             <div className="jars-container">
                 {jars.map((jar) => (
                     <div className="jar" key={jar.id}>
-                        <div className="water" style={{ height: jar.filled ? '100%' : '0%' }}></div>
+                        <div className="jar-label">{jar.name}</div>
+                        <div className={`water ${jar.filling ? 'filling' : ''} ${jar.filled ? 'filled' : ''}`}></div>
                     </div>
                 ))}
             </div>

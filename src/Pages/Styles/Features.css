@@ -1,0 +1,112 @@
+/* src/Pages/Features.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f8; /* Light background color */
+}
+
+.features-container {
+    max-width: 900px; /* Limit the width for readability */
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deepened shadow for more depth */
+    animation: fadeIn 1s ease-in-out; /* Animation when the container loads */
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeInDown 1s ease-in-out forwards; /* Heading fades in from top */
+}
+
+.feature {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for feature boxes */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around feature */
+    opacity: 0;
+    transform: translateY(20px); /* Start below original position */
+    animation: fadeInUp 0.8s ease-in-out forwards; /* Animating fade-in and moving up */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deepened shadow on hover */
+}
+
+h2 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.75em;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards;
+    animation-delay: 0.1s; /* Slight delay for smooth appearance */
+}
+
+p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-in-out forwards;
+    animation-delay: 0.2s; /* Delay for smooth paragraph appearance */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .features-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}

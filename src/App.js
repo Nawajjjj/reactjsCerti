@@ -2,18 +2,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import './components/Navbar.css'; // CSS for the navbar
 import Home from './Pages/Home.jsx';
 import Contact from './Pages/Contact.jsx';
 import Features from './Pages/Features.jsx';
-import Howitworks from './Pages/Howitworks.jsx'; // Ensure correct casing
+import Howitworks from './Pages/Howitworks.jsx';
 import Login from './Pages/Login.jsx';
-import Signin from './Pages/Signin.jsx'; // Ensure correct casing
-import About from './Pages/About.jsx'; // Ensure this import exists
-import UploadCertificate from './UploadCertificate'; // Import your new component
-import ReviewResume from './ReviewResume'; // Import the ReviewResume component
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap for styling
-import './styles.css'; // Your global styles
+import SignUp from './Pages/SignUp.jsx'; // Ensure correct casing
+import About from './Pages/About.jsx';
+import UploadCertificate from './UploadCertificate'; 
+import ReviewResume from './ReviewResume'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './styles.css'; 
 
 const App = () => {
     return (
@@ -25,10 +24,10 @@ const App = () => {
                 <Route path="/features" element={<Features />} />
                 <Route path="/howitworks" element={<Howitworks />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/signin" element={<Signin />} />
-                <Route path="/about" element={<About />} /> {/* Ensure this line is correct */}
-                <Route path="/upload" element={<UploadCertificate />} /> {/* Add this line */}
-                <Route path="/review" element={<ReviewResume />} /> {/* Add this line for the ReviewResume page */}
+                <Route path="/signup" element={<SignUp />} /> {/* Correct case */}
+                <Route path="/about" element={<About />} />
+                <Route path="/upload" element={<UploadCertificate />} />
+                <Route path="/review" element={<ReviewResume />} />
             </Routes>
         </Router>
     );

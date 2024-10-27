@@ -1,0 +1,53 @@
+/* src/styles.css */
+body {
+    font-family: Arial, sans-serif; /* Set a clean font */
+    background-color: #f4f4f4; /* Light gray background for the body */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px; /* Limit the width of content */
+    margin: 20px auto; /* Center content with margins */
+    padding: 20px;
+    background-color: #fff; /* White background for containers */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+h2 {
+    color: #333; /* Dark color for headings */
+    margin-bottom: 20px; /* Spacing below headings */
+}
+
+p {
+    color: #555; /* Slightly lighter color for paragraphs */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* Add custom styles for buttons */
+.btn-custom {
+    background-color: #007bff; /* Custom button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3; /* Darker on hover */
+}
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

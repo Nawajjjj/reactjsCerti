@@ -1,115 +1,138 @@
-/* src/UploadCertificate.css */
+/* UploadCertificate.css */
 .upload-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-
-    background-color: #f8f9fa; /* Light background for better contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    max-width: 500px; /* Maximum width for the upload container */
-    margin: 20px auto; /* Center the container */
+    justify-content: center;
+    margin-top: 50px;
+    font-family: 'Poppins', sans-serif;
 }
 
 h2 {
-    margin-bottom: 20px; /* Space below the heading */
-    color: #333; /* Darker color for better readability */
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
 }
 
 .upload-area {
-    border: 2px dashed #007bff; /* Dashed border for the file input */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px;
+    border: 2px dashed #bbb;
+    padding: 40px;
+    width: 350px;
     text-align: center;
-    width: 100%;
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, border-color 0.3s; /* Transition for border color and background */
+    background-color: #f3f4f6;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-area p {
+    color: #666;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
 }
 
 .upload-area:hover {
-    background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
-    border-color: #0056b3; /* Darker border on hover */
+    border-color: #007BFF;
+    background-color: #e9f5ff;
 }
 
 input[type="file"] {
-    display: none; /* Hide the file input */
+    display: none;
 }
 
 .upload-button {
-    padding: 10px 20px; /* Padding for the button */
-    background-color: #007bff; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Rounded corners for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Transition for background color */
-    margin-top: 10px; /* Space above the button */
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease;
 }
 
-.upload-button:hover {
-    background-color: #0056b3; /* Darker background on hover */
+.upload-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.upload-button:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: translateY(-3px);
 }
 
 .file-names {
-    margin-top: 10px; /* Space above the file names */
+    margin-top: 20px;
+    text-align: left;
+    width: 350px;
+}
+
+.file-names p {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .jars-container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Ensure jars wrap if more than one row */
-    margin-top: 20px;
-    gap: 10px; /* Space between jars */
+    flex-wrap: wrap;
+    margin-top: 30px;
+    gap: 20px;
 }
 
 .jar {
-    width: 60px; /* Width of the jar */
-    height: 150px; /* Height of the jar */
-    border: 2px solid #007bff; /* Jar border color */
-    border-radius: 5px; /* Slight rounding of corners */
-    position: relative; /* Positioning for water filling */
-    overflow: hidden; /* Hide overflowing water */
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent jar for depth effect */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for jars */
+    width: 100px;
+    height: 180px;
+    border: 3px solid #007BFF;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.jar:hover {
+    transform: scale(1.05);
+}
+
+.jar-label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: #007BFF;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .water {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    height: 0; /* Start with no water */
-    background-color: #007bff; /* Water color */
-    transition: height 1s ease-in-out; /* Smooth transition for filling */
-    border-radius: 0 0 5px 5px; /* Round the top of the water */
+    width: 100%;
+    background-color: #007BFF;
+    height: 0%; /* Start as empty */
+    transition: height 2s ease-in-out;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
-/* Optional: Add responsiveness */
-@media (max-width: 600px) {
-    .upload-container {
-        padding: 15px; /* Less padding on smaller screens */
-    }
-
-    .jar {
-        width: 50px; /* Smaller jars on smaller screens */
-        height: 120px; /* Smaller jars on smaller screens */
-    }
-} 
-/* src/UploadCertificate.css */
-.extracted-text {
-    margin-top: 20px; /* Space above the extracted text section */
-    width: 100%; /* Full width */
+.water.filling {
+    height: 100%; /* Start the water-filling animation */
 }
 
-.extracted-text h3 {
-    margin: 10px 0; /* Space around the file name */
-    color: #007bff; /* Color for file names */
-}
-
-.extracted-text p {
-    background: #f1f1f1; /* Light background for text */
-    padding: 10px; /* Padding for text */
-    border-radius: 4px; /* Rounded corners */
-    margin: 5px 0; /* Space between extracted texts */
+.water.filled {
+    height: 100%; /* Once fully filled */
 }
