@@ -6,12 +6,7 @@ import './Styles/Home.css';
 const Home = () => {
     const howItWorksRef = useRef('HowItWorks'); // Ref for "How It Works" section
 
-    const scrollToSection = () => {
-        if (howItWorksRef.current) {
-            howItWorksRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
+   
     return (
         <div className="homepage">
             <div className="hero"></div>
@@ -24,77 +19,153 @@ const Home = () => {
 
             {/* How It Works Section */}
             <section ref={howItWorksRef} className="how-it-works">
-                <h2>How It Works</h2>
-                <div className="steps">
-                    <div className="step-card">
-                        <div className="icon">✏️</div>
-                        <h3>Upload Certificates</h3>
-                        <p>Upload all your Certificates.</p>
-                    </div>
-                    <div className="step-card">
-                        <div className="icon">📄</div>
-                        <h3>Choose Template</h3>
-                        <p>Select a professional template that suits your style.</p>
-                    </div>
-                    <div className="step-card">
-                        <div className="icon">🔄</div>
-                        <h3>Get Preview</h3>
-                        <p>View your resume in real-time as you edit.</p>
-                    </div>
-                    <div className="step-card">
-                        <div className="icon">📥</div>
-                        <h3>Download</h3>
-                        <p>Export your resume as a PDF for easy sharing.</p>
-                    </div>
+    <h2>How It Works</h2>
+    <div className="steps">
+        <div className="step-card">
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <div className="icon">✏️</div>
+                    <h3>Upload Certificates</h3>
+                    <p>Upload all your Certificates.</p>
                 </div>
-            </section>
+                <div className="flip-card-back">
+                    <h3>Upload Certificates</h3>
+                    <p>Upload your certificates easily and securely.</p>
+                </div>
+            </div>
+        </div>
+        <div className="step-card">
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <div className="icon">📄</div>
+                    <h3>Choose Template</h3>
+                    <p>Select a professional template that suits your style.</p>
+                </div>
+                <div className="flip-card-back">
+                    <h3>Choose Template</h3>
+                    <p>Select from a variety of customizable templates.</p>
+                </div>
+            </div>
+        </div>
+        <div className="step-card">
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <div className="icon">🔄</div>
+                    <h3>Get Preview</h3>
+                    <p>View your resume in real-time as you edit.</p>
+                </div>
+                <div className="flip-card-back">
+                    <h3>Get Preview</h3>
+                    <p>Preview your resume as you build it.</p>
+                </div>
+            </div>
+        </div>
+        <div className="step-card">
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <div className="icon">📥</div>
+                    <h3>Download</h3>
+                    <p>Export your resume as a PDF for easy sharing.</p>
+                </div>
+                <div className="flip-card-back">
+                    <h3>Download</h3>
+                    <p>Download your professional resume instantly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            {/* Why CertiResume Section */}
-           
 
-
-            {/* Features Section */}
-            <section className="features">
+{/* Features Section */}
+<section className="features">
     <h2>Our Features</h2>
     <div className="feature-list">
         <div className="feature-item">
-            <FaRocket className="feature-icon" />
-            <h3>Customizable Templates</h3>
-            <p>Choose from a variety of professional resume templates designed to match your style and industry.</p>
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <FaRocket className="feature-icon" />
+                    <h3>OCR-Powered Resume Creation</h3>
+                    <p>Our advanced OCR analyzes your certificates and creates tailored, professional resumes in minutes.</p>
+                </div>
+                <div className="flip-card-back">
+                    <p>Our OCR feature provides a seamless, efficient experience in resume creation.</p>
+                </div>
+            </div>
         </div>
+
         <div className="feature-item">
-            <FaClipboardList className="feature-icon" />
-            <h3>Automatic Formatting</h3>
-            <p>Our system automatically formats your resume to look professional and polished.</p>
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <FaClipboardList className="feature-icon" />
+                    <h3>Multiple Resume Templates</h3>
+                    <p>Choose from a wide range of modern, ATS-friendly templates to suit your industry and style.</p>
+                </div>
+                <div className="flip-card-back">
+                    <p>Discover the perfect template to showcase your skills!</p>
+                </div>
+            </div>
         </div>
+
         <div className="feature-item">
-            <FaCamera className="feature-icon" />
-            <h3>Upload Certifications</h3>
-            <p>Seamlessly integrate certifications directly into your resume with a simple upload.</p>
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <FaCamera className="feature-icon" />
+                    <h3>OCR-Powered Data Extraction</h3>
+                    <p>Our cutting-edge OCR technology accurately extracts information from your certificates, saving you time and effort.</p>
+                </div>
+                <div className="flip-card-back">
+                    <p>Fast and reliable OCR extraction for your certificates!</p>
+                </div>
+            </div>
         </div>
+
         <div className="feature-item">
-            <FaLightbulb className="feature-icon" />
-            <h3>Live Preview</h3>
-            <p>Get real-time feedback to see how your resume will look while editing.</p>
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <FaLightbulb className="feature-icon" />
+                    <h3>Skills Highlighting</h3>
+                    <p>Automatically identify and highlight key skills from your certificates to match job requirements.</p>
+                </div>
+                <div className="flip-card-back">
+                    <p>Identify and emphasize essential skills effortlessly!</p>
+                </div>
+            </div>
         </div>
+
         <div className="feature-item">
-            <FaCheckCircle className="feature-icon" />
-            <h3>Export as PDF</h3>
-            <p>Easily download your resume as a PDF for professional sharing and printing.</p>
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <FaCheckCircle className="feature-icon" />
+                    <h3>Quick Turnaround</h3>
+                    <p>Generate your professional resume in less than 15 minutes, perfect for last-minute applications.</p>
+                </div>
+                <div className="flip-card-back">
+                    <p>Get a professional resume ready in no time!</p>
+                </div>
+            </div>
+        </div>
+
+        <div className="feature-item">
+            <div className="flip-card-inner">
+                <div className="flip-card-front">
+                    <FaCheckCircle className="feature-icon" />
+                    <h3>ATS Optimization</h3>
+                    <p>Ensure your resume passes Applicant Tracking Systems with our optimized formatting and keyword suggestions.</p>
+                </div>
+                <div className="flip-card-back">
+                    <p>Maximize your chances of passing ATS checks!</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 
 
-            {/* Contact Us Section */}
-            <section className="contact-section">
-    <h2>Contact Us</h2>
-    <p>If you have any questions, feel free to reach out.</p>
-    <div className="contact-button-container">
-        <Link to="/contact" className="contact-button">Get in Touch</Link>
-    </div>
-</section>
+
+           
+        
 
 
             {/* Footer Section */}
@@ -108,10 +179,7 @@ const Home = () => {
             <div className="w-full md:w-1/3 mb-6 md:mb-0">
                 <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
                 <ul className="space-y-2">
-                    <li><Link to="#about" className="hover:text-blue-400 transition-colors">About</Link></li>
-                    <li><Link to="#contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
-                    <li><Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
-                    <li><Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link></li>
+                 
                 </ul>
             </div>
             <div className="w-full md:w-1/3 mb-6 md:mb-0 social-section">

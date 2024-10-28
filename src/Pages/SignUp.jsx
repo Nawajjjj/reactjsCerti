@@ -1,36 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faGoogle, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignUp = () => {
-  const [isFocused, setIsFocused] = useState({
-    name: false,
-    username: false,
-    email: false,
-    password: false,
-  });
   const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
+  const [fadeIn, setFadeIn] = useState(false);
+  const navigate = useNavigate();
 
-  const handleFocus = (field) => {
-    setIsFocused((prevState) => ({
-      ...prevState,
-      [field]: true,
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
+  const handleChange = (field, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: value,
     }));
-  };
-
-  const handleBlur = (field, value) => {
-    if (!value) {
-      setIsFocused((prevState) => ({
-        ...prevState,
-        [field]: false,
-      }));
-    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { name, username, email, password, confirmPassword } = formData;
+
+    if (!name || !username || !email || !password || !confirmPassword) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
     setLoading(true);
-    setTimeout(() => setLoading(false), 2000); // Simulate a loading state
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/");
+    }, 2000);
   };
 
   return (
@@ -43,35 +57,44 @@ const SignUp = () => {
         fontFamily: "'Arial', sans-serif",
         backgroundColor: "#121212",
         color: "#f0f0f0",
-        padding: "0 15px",
       }}
     >
       <style>
         {`
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          @keyframes spinner {
-            to { transform: rotate(360deg); }
-          }
           .form-container {
             width: 100%;
             max-width: 400px;
             padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
             background-color: #1e1e1e;
             border-radius: 10px;
             text-align: center;
-            animation: fadeIn 1.2s ease-in-out;
+            transform: translateY(-20px);
+            opacity: ${fadeIn ? '1' : '0'};
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            animation: fadeSlideIn 0.8s ease-out forwards;
+          }
+          @keyframes fadeSlideIn {
+            from {
+              transform: translateY(20px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+          .label {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #b3b3b3;
+            text-align: left;
+            width: 100%;
+            animation: fadeIn 0.6s ease-in forwards;
           }
           .input-field {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             font-size: 16px;
             border-radius: 5px;
             background-color: #2a2a2a;
@@ -79,13 +102,14 @@ const SignUp = () => {
             border: 1px solid #333;
             outline: none;
             box-sizing: border-box;
-            margin-bottom: 20px;
-            transition: border-color 0.3s ease, transform 0.2s ease;
-            position: relative;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease forwards;
           }
           .input-field:focus {
             border-color: #2196f3;
-            transform: scale(1.02);
+            box-shadow: 0px 0px 10px rgba(33, 150, 243, 0.5);
+            animation: pulse 0.5s ease;
           }
           .submit-button {
             width: 100%;
@@ -97,48 +121,19 @@ const SignUp = () => {
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            position: relative;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.9s ease forwards;
           }
           .submit-button:hover {
             background-color: #1976d2;
             transform: scale(1.05);
-          }
-          .submit-button .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-top: 2px solid #fff;
-            border-radius: 50%;
-            animation: spinner 0.6s linear infinite;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-          }
-          .floating-label {
-            position: absolute;
-            top: -6px;
-            left: 12px;
-            font-size: 12px;
-            color: #b3b3b3;
-            transition: color 0.3s;
-          }
-          .floating-label-active {
-            color: #2196f3;
-          }
-          .link {
-            color: #2196f3;
-            text-decoration: none;
-            transition: color 0.3s;
-          }
-          .link:hover {
-            color: #1976d2;
+            animation: bounce 0.3s ease;
           }
           .social-buttons {
             display: flex;
             justify-content: space-between;
-            margin: 20px 0;
+            margin: 15px 0;
           }
           .social-button {
             flex: 1;
@@ -152,67 +147,133 @@ const SignUp = () => {
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s;
-            color: white;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            color: #1a1a1a;
+            background-color: #888;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease forwards;
           }
           .social-button:hover {
-            transform: scale(1.05);
+            background-color: #777;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
           }
-          .facebook { background-color: #3b5998; }
-          .google { background-color: #db4437; }
-          .linkedin { background-color: #0077b5; }
-          .heading {
-            animation: fadeInDown 1.5s ease;
+          .already-account {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #b3b3b3;
+            animation: fadeIn 1.2s ease forwards;
+          }
+          .login-link {
+            color: #2196f3;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+          }
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          @keyframes slideUp {
+            from {
+              transform: translateY(30px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+          @keyframes bounce {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-5px);
+            }
           }
         `}
       </style>
 
       <form className="form-container" onSubmit={handleSubmit}>
-        <h1 className="heading" style={{ marginBottom: "10px", fontSize: "24px", fontWeight: "bold" }}>
+        <h1 style={{ marginBottom: "5px", fontSize: "24px", fontWeight: "bold" }}>
           Welcome to CertiResume Generator
         </h1>
-        <h2 style={{ color: "#b3b3b3", marginBottom: "20px", fontSize: "18px" }}>Sign Up</h2>
+      
 
-        {['name', 'username', 'email', 'password'].map((field, index) => (
-          <div style={{ position: "relative" }} key={index}>
-            <input
-              type={field === 'password' ? 'password' : 'text'}
-              className="input-field"
-              aria-label={field}
-              onFocus={() => handleFocus(field)}
-              onBlur={(e) => handleBlur(field, e.target.value)}
-              placeholder={`Enter your ${field}`}
-              style={{ borderColor: isFocused[field] ? "#2196f3" : "#333" }}
-            />
-            <span className={`floating-label ${isFocused[field] ? "floating-label-active" : ""}`}>
-              {field.charAt(0).toUpperCase() + field.slice(1)}
-            </span>
-          </div>
-        ))}
+        {/* Form Fields with Labels */}
+        <label className="label">Name</label>
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Enter your name"
+          onChange={(e) => handleChange("name", e.target.value)}
+        />
+        <label className="label">Username</label>
+        <input
+          type="text"
+          className="input-field"
+          placeholder="Enter your username"
+          onChange={(e) => handleChange("username", e.target.value)}
+        />
+        <label className="label">Email</label>
+        <input
+          type="email"
+          className="input-field"
+          placeholder="Enter your email"
+          onChange={(e) => handleChange("email", e.target.value)}
+        />
+        <label className="label">Password</label>
+        <input
+          type="password"
+          className="input-field"
+          placeholder="Enter your password"
+          onChange={(e) => handleChange("password", e.target.value)}
+        />
+        <label className="label">Confirm Password</label>
+        <input
+          type="password"
+          className="input-field"
+          placeholder="Confirm your password"
+          onChange={(e) => handleChange("confirmPassword", e.target.value)}
+        />
 
+        {/* Social Login Buttons */}
         <div className="social-buttons">
           <button type="button" className="social-button facebook">
-            <FontAwesomeIcon icon={faFacebook} className="icon" />
-            Facebook
+            <FontAwesomeIcon icon={faFacebookF} />
           </button>
           <button type="button" className="social-button google">
-            <FontAwesomeIcon icon={faGoogle} className="icon" />
-            Google
+            <FontAwesomeIcon icon={faGoogle} />
           </button>
           <button type="button" className="social-button linkedin">
-            <FontAwesomeIcon icon={faLinkedin} className="icon" />
-            LinkedIn
+            <FontAwesomeIcon icon={faLinkedinIn} />
           </button>
         </div>
 
+        {/* Submit Button */}
         <button type="submit" className="submit-button">
-          {loading ? <div className="spinner"></div> : "Sign Up"}
+          {loading ? "Creating account..." : "Sign Up"}
         </button>
 
-        <div style={{ marginTop: "15px", fontSize: "14px", color: "#b3b3b3" }}>
-          Already have an account?{" "}
-          <a href="/login" className="link">Login</a>
+        {/* Already Have an Account */}
+        <div className="already-account">
+          Already have an account?
+          <Link to="/login" className="login-link">Login</Link>
         </div>
       </form>
     </div>

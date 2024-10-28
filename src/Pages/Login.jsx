@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
     console.log('Email:', email, 'Password:', password);
+    // Here you can add your authentication logic
+    navigate('/home'); // Redirect to home page after login
   };
 
-  // Inline styles
   const styles = {
     container: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: '#121212', // Dark theme background
+      backgroundColor: '#121212',
       fontFamily: "'Roboto', sans-serif",
     },
     formContainer: {
-      backgroundColor: '#1e1e1e', // Darker form background
+      backgroundColor: '#1e1e1e',
       borderRadius: '10px',
       boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.2)',
       padding: '40px',
@@ -56,16 +59,17 @@ const Login = () => {
       padding: '12px',
       border: '1px solid #333',
       borderRadius: '5px',
-      backgroundColor: '#222', // Input background to match dark theme
+      backgroundColor: '#222',
       color: '#ffffff',
       outline: 'none',
       transition: 'border-color 0.3s ease',
     },
     inputFocus: {
-      borderColor: '#007bff', // Border on focus
+      borderColor: '#007bff',
     },
     submitButton: {
-      width: '100%',
+      width: '100%', // You can set this to a specific value if you prefer
+      maxWidth: '450px', // Increased max-width for the button
       padding: '12px',
       backgroundColor: '#007bff',
       color: '#ffffff',
@@ -74,11 +78,12 @@ const Login = () => {
       fontSize: '16px',
       cursor: 'pointer',
       marginTop: '10px',
+      boxShadow: '0px 4px 10px rgba(0, 123, 255, 0.3)',
       transition: 'background-color 0.3s ease, transform 0.3s ease',
     },
     submitButtonHover: {
       backgroundColor: '#0056b3',
-      transform: 'translateY(-3px)', // Slight lift on hover
+      transform: 'scale(1.05)', // Slightly enlarge on hover
     },
     socialLogin: {
       display: 'flex',
@@ -88,17 +93,16 @@ const Login = () => {
     socialButton: {
       flex: 1,
       padding: '10px',
-      border: '1px solid #444',
+      border: 'none',
       borderRadius: '5px',
       marginRight: '10px',
       cursor: 'pointer',
       transition: 'transform 0.3s ease, background-color 0.3s ease',
-      backgroundColor: '#333',
+      backgroundColor: '#555', // Changed to a grayish color
       color: '#ffffff',
-    },
-    socialButtonHover: {
-      backgroundColor: '#555',
-      transform: 'scale(1.05)', // Subtle scaling on hover
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     lastSocialButton: {
       marginRight: '0',
@@ -111,14 +115,6 @@ const Login = () => {
     link: {
       color: '#007bff',
       textDecoration: 'none',
-    },
-    imageContainer: {
-      flex: 1,
-      backgroundImage: 'url(https://source.unsplash.com/1600x900/?business,workspace)', // Professional background
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      borderRadius: '10px',
-      height: '400px',
     },
   };
 
@@ -158,7 +154,7 @@ const Login = () => {
             type="submit"
             style={styles.submitButton}
             onMouseEnter={(e) => (e.target.style.backgroundColor = styles.submitButtonHover.backgroundColor)}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#007bff')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = styles.submitButton.backgroundColor)}
           >
             Login
           </button>
@@ -169,24 +165,24 @@ const Login = () => {
         <div style={styles.socialLogin}>
           <button
             style={styles.socialButton}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = styles.socialButtonHover.backgroundColor)}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#333')}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#666')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#555')}
           >
-            Facebook
+            <FontAwesomeIcon icon={faFacebookF} />
           </button>
           <button
             style={styles.socialButton}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = styles.socialButtonHover.backgroundColor)}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#333')}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#666')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#555')}
           >
-            Google
+            <FontAwesomeIcon icon={faGoogle} />
           </button>
           <button
             style={{ ...styles.socialButton, ...styles.lastSocialButton }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = styles.socialButtonHover.backgroundColor)}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = '#333')}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = '#666')}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = '#555')}
           >
-            LinkdIn
+            <FontAwesomeIcon icon={faLinkedinIn} />
           </button>
         </div>
       </div>
