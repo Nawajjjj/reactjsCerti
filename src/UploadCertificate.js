@@ -12,83 +12,75 @@ const UploadCertificate = () => {
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
         setSelectedFiles(files);
-        setJars(files.map((file, index) => ({ id: index, name: file.name, filled: false, filling: false }))); // Added "filling" state
+        setJars(
+            files.map((file, index) => ({
+                id: index,
+                name: file.name,
+                filled: false,
+                filling: false,
+            }))
+        );
     };
 
-    const handleUpload = () => {
+    const handleUpload = async () => {
         if (selectedFiles.length === 0) {
             alert('Please select a file to upload.');
             return;
         }
 
         setIsProcessing(true);
+        const extractedTextArray = [];
         const ocrPromises = [];
-        const extractedData = [];
 
-        jars.forEach((jar, index) => {
-            setTimeout(() => {
-                setJars(prevJars => {
-                    const newJars = [...prevJars];
-                    newJars[index].filling = true; // Start filling water animation
-                    return newJars;
+        for (let index = 0; index < selectedFiles.length; index++) {
+            const file = selectedFiles[index];
+
+            setJars((prevJars) => {
+                const newJars = [...prevJars];
+                newJars[index].filling = true;
+                return newJars;
+            });
+
+            const ocrPromise = Tesseract.recognize(URL.createObjectURL(file), 'eng', {
+                logger: (info) => console.log(info),
+            })
+                .then(({ data: { text } }) => {
+                    extractedTextArray.push(text);
+
+                    setJars((prevJars) => {
+                        const updatedJars = [...prevJars];
+                        updatedJars[index].filled = true;
+                        return updatedJars;
+                    });
+                })
+                .catch((error) => {
+                    console.error(`Error processing ${file.name}:`, error);
                 });
 
-                const file = selectedFiles[index];
-                if (file) {
-                    const ocrPromise = Tesseract.recognize(
-                        URL.createObjectURL(file),
-                        'eng',
-                        {
-                            logger: info => console.log(info),
-                        }
-                    ).then(({ data: { text } }) => {
-                        const nameMatch = text.match(/Name[:\s]*([^\n]+)/i);
-                        const schoolMatch = text.match(/School[:\s]*([^\n]+)/i);
-                        const emailMatch = text.match(/Email[:\s]*([^\n]+)/i);
-                        const certifications = text.match(/Certification[:\s]*([^\n]+)/gi) || [];
+            ocrPromises.push(ocrPromise);
 
-                        const extracted = {
-                            name: nameMatch ? nameMatch[1].trim() : 'N/A',
-                            school: schoolMatch ? schoolMatch[1].trim() : 'N/A',
-                            email: emailMatch ? emailMatch[1].trim() : 'N/A',
-                            certifications: certifications.map(cert => cert.replace(/Certification[:\s]*/, '').trim()),
-                            skills: ['N/A'],
-                            projects: ['N/A']
-                        };
+            // Delay to simulate water filling animation
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+        }
 
-                        extractedData.push(extracted);
+        // Wait for all OCR processes to finish
+        Promise.all(ocrPromises).then(() => {
+            navigate('/review', {
+                state: { extractedText: extractedTextArray },
+            });
 
-                        setJars(prevJars => {
-                            const updatedJars = [...prevJars];
-                            updatedJars[index].filled = true; // Complete the water filling
-                            return updatedJars;
-                        });
-                    }).catch(error => {
-                        console.error(`Error processing ${jar.name}:`, error);
-                    });
-
-                    ocrPromises.push(ocrPromise);
-                }
-
-                if (index === jars.length - 1) {
-                    // Wait for all OCR promises to resolve before navigating
-                    Promise.all(ocrPromises).then(() => {
-                        setIsProcessing(false);
-                        navigate('/review', {
-                            state: { extractedText: extractedData }
-                        });
-                    });
-                }
-            }, index * 2000); // Delay for each jar filling animation
+            setIsProcessing(false);
         });
-
-        setSelectedFiles([]);
     };
 
     return (
         <div className="upload-container">
             <h2>Upload Your Certificates</h2>
-            <div className="upload-area" onClick={() => document.getElementById('file-input').click()}>
+
+            <div
+                className="upload-area"
+                onClick={() => document.getElementById('file-input').click()}
+            >
                 <p>Drag & drop your file here, or click to select files</p>
                 <input
                     id="file-input"
@@ -96,18 +88,14 @@ const UploadCertificate = () => {
                     accept=".pdf,.doc,.docx,.jpg,.png"
                     multiple
                     onChange={handleFileChange}
+                    style={{ display: 'none' }}
                 />
             </div>
+
             <button className="upload-button" onClick={handleUpload} disabled={isProcessing}>
                 {isProcessing ? 'Processing...' : 'Upload'}
             </button>
-            {selectedFiles.length > 0 && (
-                <div className="file-names">
-                    {selectedFiles.map(file => (
-                        <p key={file.name}>{file.name}</p>
-                    ))}
-                </div>
-            )}
+
             <div className="jars-container">
                 {jars.map((jar) => (
                     <div className="jar" key={jar.id}>

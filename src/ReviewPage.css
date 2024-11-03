@@ -1,0 +1,56 @@
+.review-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h2 {
+    text-align: center;
+  }
+  
+  .resume-section {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .edit-preview div, .preview-section p {
+    margin-bottom: 5px;
+  }
+  
+  .personal-info, .resume-summary, .resume-experience, .resume-education, .resume-preview {
+    margin-bottom: 15px;
+  }
+  
+  .resume-summary p, .resume-experience p, .resume-education p {
+    margin: 0 0 10px 0;
+  }
+  
+  .template-selection {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .preview-section {
+    background-color: #eaeaea;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
