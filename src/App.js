@@ -10,14 +10,11 @@ import Navbar from './components/Navbar';
 
 // Importing pages
 import Home from './Pages/Home';
-import Contact from './Pages/Contact';
-import Features from './Pages/Features';
-import HowItWorks from './Pages/Howitworks';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
-import About from './Pages/About';
-import UploadCertificate from './UploadCertificate';
-import ReviewPage from './ReviewPage';
+import UploadCertificate from './components/UploadCertificate';
+import ReviewPage from './components/ReviewPage';  // Adjust path if needed
+
 
 const App = () => {
   return (
@@ -25,12 +22,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/features" element={<Features />} />
-        <Route path="/howitworks" element={<HowItWorks />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<SignUp />} /> 
         <Route path="/upload" element={<UploadCertificate />} />
         <Route path="/review" element={<ReviewPage />} />
       </Routes>

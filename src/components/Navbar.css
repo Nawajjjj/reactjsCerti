@@ -1,51 +1,69 @@
 /* src/components/Navbar.css */
-.navbar {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    background-color: #f8f9fa; /* Light background */
+
+/* Navbar background with a slight gradient for depth */
+.custom-navbar {
+    background: linear-gradient(135deg, #4a90e2, #007bff); /* Gradient background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slight shadow for elevated look */
 }
 
+/* Navbar brand styles with modern font and color */
 .navbar-brand {
-    font-size: 1.5rem; /* Larger font for brand */
-    font-weight: bold; /* Bold text for brand */
-    color: #333; /* Dark text for branding */
+    font-size: 1.6rem; /* Larger font size */
+    font-weight: 600; /* Slightly bold for emphasis */
+    color: #fff; /* White color to stand out on the gradient */
+    text-decoration: none;
+    cursor: pointer; /* Pointer cursor for navbar brand */
 }
 
+/* Navbar link styles with spacing and smoother transitions */
 .nav-link {
-    color: #333; /* Default link color */
-    margin: 0 15px; /* Spacing between links */
-    transition: color 0.3s; /* Smooth transition for hover effect */
+    color: #f0f0f0; /* Light color for contrast on the gradient */
+    margin: 0 15px;
+    font-weight: 500; /* Medium font weight */
+    font-size: 1rem; /* Slightly larger for readability */
+    transition: color 0.2s ease, transform 0.2s ease; /* Transition for hover effect */
+    text-decoration: none;
+    cursor: pointer; /* Pointer cursor for navbar links */
 }
 
+/* Hover effect for navbar links */
 .nav-link:hover {
-    color: #007bff; /* Change color on hover */
+    color: #ffdd57; /* Eye-catching gold color on hover */
+    transform: scale(1.05); /* Slightly larger on hover for interaction */
 }
 
+/* Navbar toggler style */
 .navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.1); /* Light border for the toggler */
+    border: none; /* Remove default border */
+    color: #fff; /* White color for toggler icon */
+    cursor: pointer; /* Pointer cursor for toggler */
 }
 
-/* Styling for the Sign In link */
+/* Sign-in button styles for a modern button look */
 .nav-link.signin {
-    border: 2px solid #007bff; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    padding: 5px 10px; /* Padding around the text */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+    margin-left: auto; /* Align to the right */
+    color: #007bff; /* Primary color text */
+    background-color: #fff; /* White background */
+    border: 2px solid #007bff; /* Border matches brand color */
+    border-radius: 5px;
+    padding: 6px 12px; /* Adjusted padding for balance */
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer; /* Pointer cursor for Sign In button */
 }
 
+/* Hover effect for Sign In button */
 .nav-link.signin:hover {
-    background-color: #007bff; /* Background color on hover */
-    color: white; /* Text color on hover */
+    background-color: #007bff; /* Blue background on hover */
+    color: #fff; /* White text on hover */
 }
 
-/* Optional: Styling for active links */
-.nav-link.active {
-    font-weight: bold; /* Make active link bold */
-    color: #007bff; /* Active link color */
-}
-
-/* Additional custom styles */
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 10px; /* Padding for smaller screens */
+    .custom-navbar {
+        padding: 8px; /* Reduced padding */
+    }
+    .nav-link {
+        margin: 0 10px;
     }
 }

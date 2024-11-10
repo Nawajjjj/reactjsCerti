@@ -1,0 +1,141 @@
+.upload-container {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.upload-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+.upload-area:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.upload-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.upload-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.upload-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+}
+
+.jars-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.jar {
+    position: relative;
+    width: 100px;
+    height: 150px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.jar-label {
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background-color: #007bff;
+    transition: height 2s ease;
+}
+
+.water.filling {
+    height: 80%;  /* Adjust for "filling" effect */
+}
+
+.water.filled {
+    height: 100%;  /* Adjust for "filled" effect */
+}
+
+/* Additional styles for resume preview and templates */
+.resume-template-preview {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resume-template-preview h2 {
+    font-size: 18px;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.resume-template-preview p {
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.resume-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.resume-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resume-button:hover {
+    background-color: #218838;
+}
+
+.resume-button.download {
+    background-color: #17a2b8;
+}
+
+.resume-button.download:hover {
+    background-color: #138496;
+}

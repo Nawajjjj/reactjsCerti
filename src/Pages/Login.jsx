@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     console.log('Email:', email, 'Password:', password);
     // Here you can add your authentication logic
-    navigate('/home'); // Redirect to home page after login
+    navigate('/'); // Redirect to home page after login
   };
 
   const styles = {

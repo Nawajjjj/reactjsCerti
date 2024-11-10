@@ -1,0 +1,90 @@
+/* Overall page styling */
+.review-container {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background-color: #f4f6f9;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.resume-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resume-header {
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.resume-name {
+  font-size: 32px;
+  color: #333;
+  margin: 0;
+}
+
+.resume-contact {
+  font-size: 18px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.resume-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.resume-section p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.resume-section p:empty {
+  color: #888;
+}
+
+.action-buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.generate-resume-button,
+.edit-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+.generate-resume-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.generate-resume-button:hover {
+  background-color: #218838;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
